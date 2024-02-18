@@ -12,6 +12,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  user_images: string[] = [
+    'assets/img/avatar1.svg',
+    'assets/img/avatar2.svg',
+    'assets/img/avatar3.svg',
+    'assets/img/avatar4.svg',
+    'assets/img/avatar5.svg',
+    'assets/img/avatar6.svg',
+  ];
+
 
   signup(formData: SignupData) {
     const url = environment.baseUrl + '/signup/';
