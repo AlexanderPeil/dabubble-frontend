@@ -26,6 +26,12 @@ export class AuthService {
   }
 
 
+  guestLogin() {
+    const url = environment.baseUrl + '/guest-login/';
+    return lastValueFrom(this.http.post(url, {}));
+  }
+
+
   getLoggedUserData() {
     const url = environment.baseUrl + '/edit-user/';
     return lastValueFrom(this.http.get<SignupData>(url));
