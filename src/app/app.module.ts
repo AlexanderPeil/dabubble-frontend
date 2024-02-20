@@ -9,6 +9,15 @@ import { AuthInterceptorService } from './shared/services/auth-interceptor.servi
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ChannelComponent } from './components/channel/channel.component';
+import { HomeComponent } from './components/home/home.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { DirectMessageComponent } from './components/direct-message/direct-message.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { NewMessageComponent } from './components/new-message/new-message.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ThreadComponent } from './components/thread/thread.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +25,16 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ChannelComponent,
+    HomeComponent,
+    PrivacyPolicyComponent,
+    DirectMessageComponent,
+    HeaderComponent,
+    ImprintComponent,
+    NewMessageComponent,
+    SidenavComponent,
+    ThreadComponent
   ],
   imports: [
     BrowserModule,
