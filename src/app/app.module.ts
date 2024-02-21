@@ -18,6 +18,15 @@ import { ImprintComponent } from './components/imprint/imprint.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ThreadComponent } from './components/thread/thread.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { DialogProfileComponent } from './components/dialogs/dialog-profile/dialog-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -34,14 +43,21 @@ import { ThreadComponent } from './components/thread/thread.component';
     ImprintComponent,
     NewMessageComponent,
     SidenavComponent,
-    ThreadComponent
+    ThreadComponent,
+    DialogProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [
     {

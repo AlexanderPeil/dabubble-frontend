@@ -7,8 +7,8 @@ import {
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogProfileComponent } from '../dialog-profile/dialog-profile.component';
-import { MessageContent } from 'src/app/models/message';
+import { DialogProfileComponent } from '../dialogs/dialog-profile/dialog-profile.component';
+import { MessageContent } from 'src/app/shared/models/message';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { ThreadService } from 'src/app/shared/services/thread.service';
 import { SignupData } from 'src/app/shared/models/user-interface';
@@ -97,10 +97,10 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  navigateToSidenavMobile() {
-    this.messageService.chatOpen = false;
-    this.messageService.isSidenavOpen = true;
-    this.messageService.headerChatMobile = false;
-  }
+  // navigateToSidenavMobile() {
+  //   this.messageService.chatOpen = false;
+  //   this.messageService.isSidenavOpen = true;
+  //   this.messageService.headerChatMobile = false;
+  // }
 
 }
