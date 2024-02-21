@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { lastValueFrom } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { SignupData, LoginData } from '../models/user-interface';
+import { User } from '../models/user.class';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private usersSubject = new BehaviorSubject<User[]>([])
+
 
   constructor(private http: HttpClient) { }
+
 
   user_images: string[] = [
     'assets/img/avatar1.svg',
@@ -51,6 +55,19 @@ export class AuthService {
     console.log('Run method updateUserProfile');
     const url = environment.baseUrl + '/edit-user/';
     return lastValueFrom(this.http.patch<SignupData>(url, updateUserProfile));
+  }
+
+
+  getUserData() {
+    const url = environment.baseUrl + `/user/`;
+    this.http.get<User[]>(url).subscribe(
+      users => {
+        this.usersSubject.next(users);
+      },
+      error => {
+        console.error('Fehler beim Laden der Benutzer:', error)
+      }
+    );
   }
 
 
