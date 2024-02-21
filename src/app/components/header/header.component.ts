@@ -11,7 +11,7 @@ import { DialogProfileComponent } from '../dialogs/dialog-profile/dialog-profile
 import { MessageContent } from 'src/app/shared/models/message';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { ThreadService } from 'src/app/shared/services/thread.service';
-import { SignupData } from 'src/app/shared/models/user-interface';
+// import { SignupData } from 'src/app/shared/models/user-interface';
 import { User } from 'src/app/shared/models/user.class';
 import { Channel } from 'src/app/shared/models/channel';
 
@@ -23,9 +23,9 @@ import { Channel } from 'src/app/shared/models/channel';
 export class HeaderComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   screenWidth!: number;
-  currentUser!: SignupData;
+  currentUser!: User;
   currentUsername: string = '';
-
+  photoLoading: boolean = true;
   showMenu = false;
   isOnline?: boolean;
   searchTerm: string = '';
@@ -57,9 +57,12 @@ export class HeaderComponent implements OnInit {
 
   async getuseData() {
     try {
+      this.photoLoading = true;
       const userProfile = await this.authService.getLoggedUserData();
+      console.log(userProfile);
       this.currentUser = userProfile;
-      this.currentUsername = this.currentUser.first_name + '' + this.currentUser.last_name
+      this.photoLoading = false;
+      this.currentUsername = this.currentUser.first_name + '' + this.currentUser.last_name;
     } catch (err) {
       console.error(err);
     }
@@ -97,10 +100,10 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  // navigateToSidenavMobile() {
-  //   this.messageService.chatOpen = false;
-  //   this.messageService.isSidenavOpen = true;
-  //   this.messageService.headerChatMobile = false;
-  // }
+  navigateToSidenavMobile() {
+    this.messageService.chatOpen = false;
+    this.messageService.isSidenavOpen = true;
+    this.messageService.headerChatMobile = false;
+  }
 
 }

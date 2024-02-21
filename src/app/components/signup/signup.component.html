@@ -13,21 +13,34 @@
 
             <span class="formHeaderText">With your name and email address, you've created your new DABubble
                 account.</span>
+
             <div class="inputContainer">
                 <img class="userImg" src="assets/img/icons/user_icon.svg" alt="User icon">
-
-                <input type="text" placeholder="Firsname" formControlName="first_name"
+                <input type="text" placeholder="Firstname" formControlName="first_name"
                     (blur)="markAllAsTouched(signUpForm)">
                 <div *ngIf="signUpForm.get('first_name')?.hasError('required') && hasUserInteracted"
                     class="notification warning">
                     Firstname is required.
                 </div>
+            </div>
 
+            <div class="inputContainer">
+                <img class="userImg" src="assets/img/icons/user_icon.svg" alt="User icon">
                 <input type="text" placeholder="Lastname" formControlName="last_name"
                     (blur)="markAllAsTouched(signUpForm)">
                 <div *ngIf="signUpForm.get('last_name')?.hasError('required') && hasUserInteracted"
                     class="notification warning">
                     Lastname is required.
+                </div>
+            </div>
+
+            <div class="inputContainer">
+                <img class="userImg" src="assets/img/icons/user_icon.svg" alt="User icon">
+                <input type="text" placeholder="Username" formControlName="username"
+                    (blur)="markAllAsTouched(signUpForm)">
+                <div *ngIf="signUpForm.get('username')?.hasError('required') && hasUserInteracted"
+                    class="notification warning">
+                    Firstname is required.
                 </div>
             </div>
 
@@ -56,13 +69,13 @@
 
             <div class="inputContainer">
                 <img class="passwordImg" src="assets/img/icons/lock_icon.svg" alt="Lock icon">
-                <input type="password" placeholder="Confirm Password" formControlName="passwordConfirm"
+                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
                     (blur)="markAllAsTouched(signUpForm)">
-                <div *ngIf="signUpForm.get('passwordConfirm')?.hasError('required') && hasUserInteracted"
+                <div *ngIf="signUpForm.get('confirmPassword')?.hasError('required') && hasUserInteracted"
                     class="notification warning">
                     Confirm Password is required.
                 </div>
-                <div *ngIf="signUpForm.get('passwordConfirm')?.hasError('passwordMismatch')"
+                <div *ngIf="signUpForm.get('confirmPassword')?.hasError('passwordMismatch')"
                     class="notification warning">
                     Passwords do not match.
                 </div>
@@ -76,7 +89,9 @@
             </label>
             <div class="notification warning" *ngIf="signUpForm.hasError('passwordsMismatch')">Passwords do not match.
             </div>
+
             <button type="button" class="nextBtn" (click)="onNextClick()" [disabled]="!signUpForm.valid">Next</button>
+
         </form>
         <div class="loginContainerLinks hideContentMobile">
             <a class="loginLinks" routerLink="/imprint">Imprint</a>

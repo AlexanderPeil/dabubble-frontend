@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { Subscription } from 'rxjs';
+import { SignupData } from 'src/app/shared/models/user-interface';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,12 +28,13 @@ export class SignupComponent implements OnInit {
   avatarUrls: string[] = [];
   defaultAvatar: string = 'assets/img/avatar1.svg';
   hasUserInteracted = false;
-
+  formData!: SignupData;
   userAlreadyExists!: boolean;
   signUpForm!: FormGroup;
   submitted!: boolean;
   signedUpInfo!: boolean;
   isButtonDisabled!: boolean;
+  user!: SignupData;
 
   constructor(
     private authService: AuthService,
@@ -57,10 +59,11 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      photo: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [''],
+      confirmPassword: ['', Validators.required],
       checked: this.checked,
+      photo: ['']
     }, { validators: this.checkPasswords } as AbstractControlOptions);
   }
 
@@ -72,8 +75,9 @@ export class SignupComponent implements OnInit {
 
     let pass = group.get('password')?.value;
     let confirmPass = group.get('confirmPassword')?.value;
-    return pass === confirmPass ? null : { notSame: true }
+    return pass === confirmPass ? null : { passwordsMismatch: true }
   }
+
 
 
   onSubmit() {
@@ -86,15 +90,17 @@ export class SignupComponent implements OnInit {
 
 
   async performSignup() {
+    const formData = {
+      ...this.signUpForm.value,
+      photo: this.selectedAvatarURL
+    };
+
     try {
-      const formData = this.signUpForm.value;
       let resp: any = await this.authService.signup(formData);
       localStorage.setItem('token', resp.token);
       this.signedUpInfo = true;
       this.isButtonDisabled = true;
-      setTimeout(() => {
-        this.router.navigateByUrl('/login');
-      }, 3000);
+      this.userCreatedFn();
     } catch (err) {
       console.error('Could not signup.', err);
       this.handlySignUpError();
@@ -105,7 +111,7 @@ export class SignupComponent implements OnInit {
   userCreatedFn() {
     this.userCreated = true;
     setTimeout(() => {
-      this.router.navigate(['/content/channel/DMoH03MTsuxcytK6BpUb']);
+      this.router.navigateByUrl('/login');
     }, 3000);
   }
 
@@ -121,8 +127,13 @@ export class SignupComponent implements OnInit {
 
 
   onNextClick(): void {
-    this.chooseAvatar = true;
+    if (this.signUpForm.valid) {
+      this.chooseAvatar = true;
+    } else {
+      this.markAllAsTouched(this.signUpForm);
+    }
   }
+
 
 
   onbackClick() {
@@ -132,7 +143,9 @@ export class SignupComponent implements OnInit {
 
   selectAvatar(url: string) {
     this.selectedAvatarURL = url;
+    this.signUpForm.patchValue({ photo: url });
   }
+
 
 
   // chooseFiletoUpload($event: any) {

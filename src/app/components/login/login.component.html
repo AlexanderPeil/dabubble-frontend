@@ -29,14 +29,14 @@
 
             <div class="inputContainer">
                 <img class="mailImg" src="assets/img/icons/mail_icon.svg" alt="Email icon" />
-                <input type="email" placeholder="examplename@email.com" formControlName="email"
+                <input type="text" placeholder="Username" formControlName="username"
                     (blur)="markAllAsTouched(loginForm)">
                 <div *ngIf="
-              loginForm.get('email')?.hasError('required') && hasUserInteracted
+              loginForm.get('username')?.hasError('required') && hasUserInteracted
             " class="notification warning">
                     Email is required.
                 </div>
-                <div *ngIf="loginForm.get('email')?.hasError('email') && hasUserInteracted"
+                <div *ngIf="loginForm.get('username')?.hasError('username') && hasUserInteracted"
                     class="notification warning">
                     Please include an '@' and a domain (e.g., '.com') in the email
                     address.
