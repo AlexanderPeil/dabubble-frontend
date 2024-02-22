@@ -11,6 +11,7 @@ import { User } from '../models/user.class';
 })
 export class AuthService {
   private usersSubject = new BehaviorSubject<User[]>([])
+  public users$ = this.usersSubject.asObservable();
   guestuserPhoto: string = '';
 
 

@@ -20,9 +20,13 @@ const routes: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
   {
-    path: 'home', component:HomeComponent,
+    path: 'home', component: HomeComponent,
     children: [
-      // {path: ''} Redirect to a default channel?
+      {
+        path: '',
+        redirectTo: 'channel/1',
+        pathMatch: 'full'
+      },
     ]
   },
 

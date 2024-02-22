@@ -1,37 +1,27 @@
 export class Channel {
-    channelName: string;
-    channelDescription: string;
-    createDate: number;
-    users: any;
-    channelId: string;
-    readBy?: string[];
-    channelCreatedBy: any;
-  
-    constructor(object?: any) {
-      this.channelName = object ? object.channelName : '';
-      this.channelDescription = object ? object.channelDescription : '';
-      this.createDate = object ? object.createDate : Date.now();
-      this.users = object ? object.users : null;
-      this.channelId = object ? object.channelId : null;
-      this.readBy = object && object.readBy ? object.readBy : [];
-      this.channelCreatedBy = object ? object.channelCreatedBy : null;
-    }
-  
-    toJSON() {
-      const json: any = {
-        channelName: this.channelName,
-        channelDescription: this.channelDescription,
-        createDate: this.createDate,
-        users: this.users,
-        channelId: this.channelId,
-        channelCreatedBy: this.channelCreatedBy,
-      };
-  
-      if (this.readBy) {
-        json.readBy = this.readBy;
-      }
-  
-      return json;
-    }
+  id: number;
+  title: string;
+  description: string;
+  members: number[];
+  created_by: number;
+
+
+  constructor(obj?: any) {
+    this.id = obj ? obj.id : null;
+    this.title = obj ? obj.title : '';
+    this.description = obj ? obj.description : '';
+    this.members = obj ? obj.members : [];
+    this.created_by = obj ? obj.created_by : null;
   }
-  
+
+
+  public toJSON() {
+    return {
+      id: this.id,
+      title: this.title,
+      description: this.description,
+      members: this.members,
+      created_by: this.created_by,
+    };
+  }
+}
