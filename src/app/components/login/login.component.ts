@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      // rememberMe: [!!savedUsername],
     });
   }
 
@@ -142,10 +141,11 @@ export class LoginComponent implements OnInit {
   async onGuestLogin(event: MouseEvent) {
     event.stopPropagation();
     try {
-      const resp: any = await this.authService.guestLogin();
+      const resp: any = await this.authService.guestLogin();      
       localStorage.setItem('token', resp['token']);
       this.router.navigateByUrl('/home');
     } catch (err) {
+      console.error(err);
     }
   }
 

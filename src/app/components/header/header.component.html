@@ -19,27 +19,26 @@
       <img class="logoImg" src="./assets/img/codelearning.svg" alt="" />
     </div>
   
-    <app-searchbar *ngIf="screenWidth > 630"></app-searchbar>
+    <!-- <app-searchbar *ngIf="screenWidth > 630"></app-searchbar> -->
   
     <div
       class="headerProfileContent"
       (click)="toggleMenu(); $event.stopPropagation()"
     >
-      <div class="userName" *ngIf="user">{{ user.displayName }}</div>
+      <div class="userName">{{ currentUsername }}</div>
       <div class="userIconWrapper">
-        <img
+        <img *ngIf="!photoLoading"
           class="userImg"
-          [src]="user?.photoURL"
-          (error)="retryLoadImage(user)"
+          [src]="currentUser.photo"
         />
         <img
-          *ngIf="user?.isOnline"
+          *ngIf="currentUser?.is_online"
           class="statusIcon"
           src="assets/img/icons/user_online.svg"
           alt="Online"
         />
         <img
-          *ngIf="!user?.isOnline"
+          *ngIf="!currentUser?.is_online"
           class="statusIcon"
           src="assets/img/icons/user_offline.svg"
           alt="Offline"

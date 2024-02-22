@@ -11,6 +11,7 @@ import { User } from '../models/user.class';
 })
 export class AuthService {
   private usersSubject = new BehaviorSubject<User[]>([])
+  guestuserPhoto: string = '';
 
 
   constructor(private http: HttpClient) { }
@@ -39,22 +40,39 @@ export class AuthService {
   }
 
 
+  // getRandomPhoto() {
+  //   const randomIndex  = Math.floor(Math.random() * this.user_images.length);
+  //   return this.user_images[randomIndex ];
+  // }
+
+
   guestLogin() {
-    const url = environment.baseUrl + '/guest-login/';
+    const url = environment.baseUrl + '/guest-login/';    
     return lastValueFrom(this.http.post(url, {}));
   }
 
 
+  // guestLogin() {
+  //   const url = environment.baseUrl + '/guest-login/';    
+  //   const randomPhoto = this.getRandomPhoto();
+  //   return lastValueFrom(this.http.post<User>(url, {photo: randomPhoto}))
+  //   .then(response => {
+  //     this.guestuserPhoto = response.photo;
+  //     return this.guestuserPhoto;
+  //   })
+  // }
+
+
   getLoggedUserData() {
     const url = environment.baseUrl + '/edit-user/';
-    return lastValueFrom(this.http.get<SignupData>(url));
+    return lastValueFrom(this.http.get<User>(url));
   }
 
 
-  updateUserProfile(updateUserProfile: SignupData) {
+  updateUserProfile(updateUserProfile: User) {
     console.log('Run method updateUserProfile');
     const url = environment.baseUrl + '/edit-user/';
-    return lastValueFrom(this.http.patch<SignupData>(url, updateUserProfile));
+    return lastValueFrom(this.http.patch<User>(url, updateUserProfile));
   }
 
 

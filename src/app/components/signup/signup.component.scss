@@ -1,10 +1,10 @@
-@import "../../shared/variables.scss";
-@import "../../shared/login_default.scss";
+@import "../../shared/styles/vairables.scss";
+@import "../../shared/styles/login_default.scss";
 
 .signUpContent {
     @include login_standard_container;
     align-items: center;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .signupContainer {

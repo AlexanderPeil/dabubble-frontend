@@ -55,10 +55,10 @@
     height: 40px;
     cursor: pointer;
     transition: all 125ms ease-in-out;
-    background: url("../../assets/img/icons/arrow_back.svg");
+    background: url("../../../assets/img/icons/arrow_back.svg");
   
     &:hover {
-      background: url("../../assets/img/icons/arrow_back_hover.svg");
+      background: url("../../../assets/img/icons/arrow_back_hover.svg");
       background-repeat: no-repeat;
     }
   }
