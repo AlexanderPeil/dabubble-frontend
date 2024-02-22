@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
       console.log(userProfile);
       this.currentUser = userProfile;
       this.photoLoading = false;
-      this.currentUsername = this.currentUser.first_name + '' + this.currentUser.last_name;
+      this.currentUsername = this.currentUser.first_name + ' ' + this.currentUser.last_name;
     } catch (err) {
       console.error(err);
     }

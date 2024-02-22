@@ -26,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { DialogProfileComponent } from './components/dialogs/dialog-profile/dialog-profile.component';
+import { EmailVerifyComponent } from './components/email-verify/email-verify.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { DialogProfileComponent } from './components/dialogs/dialog-profile/dial
     NewMessageComponent,
     SidenavComponent,
     ThreadComponent,
-    DialogProfileComponent
+    DialogProfileComponent,
+    EmailVerifyComponent
   ],
   imports: [
     BrowserModule,

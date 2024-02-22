@@ -7,10 +7,17 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { EmailVerifyComponent } from './components/email-verify/email-verify.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'verify/:token', component: EmailVerifyComponent },
+  { path: 'sign-up', component: SignupComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'imprint', component: ImprintComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
   {
     path: 'home', component:HomeComponent,
@@ -18,12 +25,6 @@ const routes: Routes = [
       // {path: ''} Redirect to a default channel?
     ]
   },
-
-  { path: 'sign-up', component: SignupComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'imprint', component: ImprintComponent },
-  { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
 ];
 
