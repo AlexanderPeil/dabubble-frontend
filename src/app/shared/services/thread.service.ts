@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.class';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -15,10 +16,32 @@ export class ThreadService {
   urlContainsPdfEnding: boolean = false;
   filteredUrlToString: string = '';
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
 
   closeThreadService() {
     this.threadAreClosed = false;
   }
+
+
+  openChannelThread(messageId: number, channelId: number, channelName: string) {
+    this.threadAreClosed = true;
+    this.setChannelName(channelName);
+    this.router.navigate([
+      '/content',
+      'channel',
+      channelId,
+      'thread',
+      messageId,
+      channelId,
+    ]);
+  }
+
+
+  setChannelName(name: string): void {
+    this.currentChannelName = name;
+  }
+
 }

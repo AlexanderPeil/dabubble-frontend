@@ -1,5 +1,5 @@
 export class MessageContent {
-    id?: string;
+    id: number;
     created_at: Date;
     created_by: number;
     content: string;
@@ -8,7 +8,7 @@ export class MessageContent {
 
 
     constructor(object?: any) {
-        this.id = object?.id;
+        this.id = object?.id || null;
         this.created_at = object?.created_at ? new Date(object.created_at) : new Date();
         this.created_by = object?.created_by;
         this.content = object?.content || '';

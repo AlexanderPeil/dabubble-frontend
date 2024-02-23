@@ -98,7 +98,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   // }
 
 
-  onChannelClick(id: number) {
+  onChannelClick(channelId: number) {
     // this.messageService.markChannelMessageAsRead(channelId);
     // this.messageService.openChatMobile();
   }

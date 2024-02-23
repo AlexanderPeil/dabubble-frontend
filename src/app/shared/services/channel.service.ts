@@ -30,10 +30,35 @@ export class ChannelService {
 
   createChannel(channelData: Channel) {
     const url = environment.baseUrl + '/channels/';
-    console.log('Send data to backend');    
     return this.http.post(url, channelData);
   }
 
 
+  getChannelById(id: number) {
+    const url = environment.baseUrl + `/channels/${id}`;
+    return this.http.get<Channel>(url);
+  }
+
+
+  updateChannel() {
+
+  }
+
+
+  updateChannelTitle(title: string, id: number) {
+    const url = environment.baseUrl + `/channels/${id}/`;    
+    return this.http.patch<Channel>(url, {title: title});
+  }
+
+
+  updateChannelDescription(description: string, id: number) {
+    const url = environment.baseUrl + `/channels/${id}/`;
+    return this.http.patch<Channel>(url, {description: description});
+  }
+
+
+  deleteChannel(channelId:number) {
+
+  }
 
 }

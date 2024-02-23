@@ -6,4 +6,15 @@ import { Injectable } from '@angular/core';
 export class StorageService {
 
   constructor() { }
+
+
+  clearUploadedFiles() {
+    
+  }
+
+
+  deleteFileFromStorage(fileUrl: string) {
+
+  }
+
 }

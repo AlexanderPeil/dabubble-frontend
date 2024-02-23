@@ -3,7 +3,7 @@ export class Channel {
   title: string;
   description?: string;
   members: number[];
-  created_by: number;
+  created_by_full_name : string;
 
 
   constructor(obj?: any) {
@@ -11,7 +11,7 @@ export class Channel {
     this.title = obj ? obj.title : '';
     this.description = obj ? obj.description : '';
     this.members = obj ? obj.members : [];
-    this.created_by = obj ? obj.created_by : null;
+    this.created_by_full_name  = obj ? obj.created_by_full_name  : null;
   }
 
 
@@ -21,7 +21,7 @@ export class Channel {
       title: this.title,
       description: this.description,
       members: this.members,
-      created_by: this.created_by,
+      created_by: this.created_by_full_name ,
     };
   }
 }
