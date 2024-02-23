@@ -1,0 +1,89 @@
+<div class="dialogMainContainer">
+    <div class="dialogTopContainer">
+        <div class="dialogTopChildContainer">
+            <img src="assets/img/icons/hashtag.svg" />
+            <p>{{ data.channelTitle }}</p>
+        </div>
+
+        <div class="closeIconContainer">
+            <img mat-dialog-close src="assets/img/icons/closeIcon.svg" title="Close window" />
+        </div>
+    </div>
+
+    <div [class.removeBorder]="showInputToEditChannelName" class="dialogMiddleContainer">
+        <div [ngClass]="{
+          translateToTop: showInputToEditChannelName,
+          translateToTBottom: !showInputToEditChannelName
+        }" class="textChannelNameAndEditContainer">
+            <p class="textChannelName">Channel Name</p>
+            <button [class.d-none]="showInputToEditChannelName" (click)="editChannelName()" class="textEdit">
+                Edit
+            </button>
+
+            <!------------------------ Only displayed when editing the channel name ------------------------>
+            <button [disabled]="data.channelTitle == '' || !channelNameHasChanged" [class.disableSaveBtn]="
+            data.channelTitle == '' || !channelNameHasChanged
+          " [class.show]="showInputToEditChannelName" class="textEdit d-none" (click)="saveChannelTitle()">
+                Save
+            </button>
+            <!------------------------ Only displayed when editing the channel name ------------------------>
+        </div>
+
+        <div [class.d-none]="showInputToEditChannelName" class="channelNameAndHashtagIconContainer">
+            <img src="assets/img/icons/hashtag.svg" />
+            <p>{{ data.channelTitle }}</p>
+        </div>
+
+        <!------------------------ Only displayed when editing the channel name ------------------------>
+        <div [class.show]="showInputToEditChannelName" class="inputContainer d-none">
+            <img src="assets/img/icons/hashtag.svg" />
+            <input (ngModelChange)="newChannelTitle($event)" [(ngModel)]="newChannelTitleValue" type="text"
+                [placeholder]="data.channelTitle" />
+        </div>
+        <!------------------------ Only displayed when editing the channel name ------------------------>
+    </div>
+
+    <div [class.removeBorder]="showInputToEditChannelDescription" class="dialogBottomContainer">
+        <div [ngClass]="{
+          translateToTop: showInputToEditChannelDescription,
+          translateToTBottom: !showInputToEditChannelDescription
+        }" class="textChannelNameAndEditContainer">
+            <p class="textChannelName">Description</p>
+            <button [class.d-none]="showInputToEditChannelDescription" class="textEdit"
+                (click)="editDescription()">
+                Edit
+            </button>
+
+            <!------------------------ Only displayed when editing the channel description ------------------------>
+            <button [disabled]="!channelDescriptionHasChanged" [class.disableSaveBtn]="!channelDescriptionHasChanged"
+                [class.show]="showInputToEditChannelDescription" class="textEdit d-none" (click)="saveChannelDescritpion()">
+                Save
+            </button>
+            <!------------------------ Only displayed when editing the channel description ------------------------>
+        </div>
+
+        <p [class.d-none]="showInputToEditChannelDescription">
+            {{data.channelDescription}}
+        </p>
+
+        <!------------------------ Only displayed when editing the channel description ------------------------>
+        <div [class.show]="showInputToEditChannelDescription" class="inputContainer d-none">
+            <input (ngModelChange)="newDescritpion($event)" [(ngModel)]="newChannelDescriptionValue"
+                type="text" placeholder="Your text here" />
+        </div>
+        <!------------------------ Only displayed when editing the channel description ------------------------>
+
+        <hr />
+        <p class="textCreatedBy">Created by</p>
+        <p class="userName">
+            {{ data.channelCreator}}
+        </p>
+    </div>
+
+    <div class="btnContainer">
+        <button (click)="channelService.deleteChannel(data.channelId)" mat-button mat-dialog-close
+            color="primary">
+            Leave Channel
+        </button>
+    </div>
+</div>

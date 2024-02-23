@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { EmailVerifyComponent } from './components/email-verify/email-verify.component';
+import { ChannelComponent } from './components/channel/channel.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -26,6 +27,10 @@ const routes: Routes = [
         path: '',
         redirectTo: 'channel/1',
         pathMatch: 'full'
+      },
+      {
+        path: 'channel/:id',
+        component: ChannelComponent
       },
     ]
   },

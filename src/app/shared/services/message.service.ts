@@ -4,6 +4,7 @@ import { ChannelService } from 'src/app/shared/services/channel.service';
 import { Channel } from 'src/app/shared/models/channel';
 import { User } from '../models/user.class';
 import { BehaviorSubject } from 'rxjs';
+import { MessageContent } from '../models/message';
 
 
 @Injectable({
@@ -52,6 +53,26 @@ export class MessageService {
 
   toggleSidenav() {
     this.isSidenavOpen = !this.isSidenavOpen;
+  }
+
+
+  postChannelMessage(formData: MessageContent) {
+
+  }
+
+
+  showAllChannelMessage() {
+
+  }
+
+
+  updateChannelMessage() {
+
+  }
+
+
+  deleteChannelMessage(channelId: number, messageId: number) {
+
   }
 
 }

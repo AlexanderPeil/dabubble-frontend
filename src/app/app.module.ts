@@ -31,6 +31,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { DialogProfileComponent } from './components/dialogs/dialog-profile/dialog-profile.component';
 import { EmailVerifyComponent } from './components/email-verify/email-verify.component';
 import { CreateChannelComponent } from './components/dialogs/create-channel/create-channel.component';
+import { EditChannelComponent } from './components/dialogs/edit-channel/edit-channel.component';
+import { AddMembersToChannelComponent } from './components/dialogs/add-members-to-channel/add-members-to-channel.component';
 
 
 @NgModule({
@@ -51,7 +53,9 @@ import { CreateChannelComponent } from './components/dialogs/create-channel/crea
     ThreadComponent,
     DialogProfileComponent,
     EmailVerifyComponent,
-    CreateChannelComponent
+    CreateChannelComponent,
+    EditChannelComponent,
+    AddMembersToChannelComponent
   ],
   imports: [
     BrowserModule,
