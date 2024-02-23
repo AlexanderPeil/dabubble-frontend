@@ -1,0 +1,91 @@
+<div class="padding" *ngIf="chooseMembers">
+    <div class="dialogHead">
+        <p>Create new Channel</p>
+        <div class="closeIconContainer">
+            <img mat-dialog-close src="assets/img/icons/closeIcon.svg" title="Close window" />
+        </div>
+    </div>
+
+    <p class="textContainer">
+        Channels are used by your team to communicate. They should ideally be themed
+        #marketing for example
+    </p>
+    <form [formGroup]="channelForm">
+        <div class="inputHeadAndContainer">
+            <p>Channel-Name</p>
+            <div class="FirstInputContainer">
+                <img src="./assets/img/icons/hashtag.svg" alt="" />
+                <input type="text" placeholder="e.g. Marketing"
+                    formControlName="title">
+            </div>
+        </div>
+
+        <div class="inputHeadAndContainer">
+            <p>Description (optional)</p>
+            <div class="FirstInputContainer">
+                <input type="text" placeholder="Write your text here" autocomplete="off" formControlName="description">
+            </div>
+        </div>
+
+        <div class="btnContainer">
+            <button  (click)="toggleForms()" mat-button [disabled]="!channelForm.valid">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-------------------------------------- add User into the Channel start here ---------------------------------->
+<div *ngIf="!chooseMembers">
+    <div class="dialogContainer">
+        <div class="dialogHead">
+            <p>Add Members</p>
+            <div class="closeIconContainer">
+                <img mat-dialog-close src="assets/img/icons/closeIcon.svg" title="Close window" />
+            </div>
+        </div>
+
+        <mat-radio-group class="flex-column" aria-label="Select an option" (change)="onRadioChange($event)">
+            <mat-radio-button color="primary" value="1">Alle Mitglieder hinzufügen</mat-radio-button>
+            <mat-radio-button color="primary" value="2">Bestimmte Leute hinzufügen</mat-radio-button>
+        </mat-radio-group>
+
+        <!-------------------------------------- input container start here ---------------------------------->
+        <div class="inputContainer" [class.hiddenInputContainer]="!isInputVisible">
+            <mat-chip-grid #chipGrid>
+                <input #input name="addMember" type="text" placeholder="Write Name" autocomplete="off"
+                    (click)="checkForDropdown($event)" (input)="checkForDropdown($event)"
+                    [matChipInputFor]="chipGrid" />
+                <div class="selectedUserListContainer">
+                    <mat-chip-row *ngFor="let user of selectedUsers" (removed)="removeUserFromSelectedUser(user)">
+                        <img src="{{ user.photo }}" />
+                        <span>{{ user.first_name }} {{user.last_name}}</span>
+                        <button matChipRemove [attr.aria-label]="'remove ' + user">
+                            <mat-icon color="primary">cancel</mat-icon>
+                        </button>
+                    </mat-chip-row>
+                </div>
+            </mat-chip-grid>
+        </div>
+
+        <!-------------------------------------- User Dropdown start here ---------------------------------->
+        <div *ngIf="showUserDropdown" class="user-dropdown">
+            <div *ngFor="let user of filteredUsers" (click)="selectUser(user)">
+                <img [src]="user.photo" />
+                <span>{{ user.first_name }} {{user.last_name}}</span>
+            </div>
+        </div>
+
+        <div class="btnContainer">
+            <button type="submit" mat-button mat-dialog-close [ngClass]="{ btnDisabled: !radioSelected }"
+                [disabled]="!radioSelected" (click)="onSubmit()">
+                Create
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="userAlreadyExists" class="overlay"></div>
+    <div *ngIf="userAlreadyExists" class="popUp">
+        This User is already in the channel
+    </div>
+</div>

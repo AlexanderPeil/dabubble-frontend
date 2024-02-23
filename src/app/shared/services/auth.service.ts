@@ -41,27 +41,10 @@ export class AuthService {
   }
 
 
-  // getRandomPhoto() {
-  //   const randomIndex  = Math.floor(Math.random() * this.user_images.length);
-  //   return this.user_images[randomIndex ];
-  // }
-
-
   guestLogin() {
     const url = environment.baseUrl + '/guest-login/';    
     return lastValueFrom(this.http.post(url, {}));
   }
-
-
-  // guestLogin() {
-  //   const url = environment.baseUrl + '/guest-login/';    
-  //   const randomPhoto = this.getRandomPhoto();
-  //   return lastValueFrom(this.http.post<User>(url, {photo: randomPhoto}))
-  //   .then(response => {
-  //     this.guestuserPhoto = response.photo;
-  //     return this.guestuserPhoto;
-  //   })
-  // }
 
 
   getLoggedUserData() {

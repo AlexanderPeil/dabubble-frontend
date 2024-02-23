@@ -28,8 +28,10 @@ export class ChannelService {
   }
 
 
-  createChannel() {
-
+  createChannel(channelData: Channel) {
+    const url = environment.baseUrl + '/channels/';
+    console.log('Send data to backend');    
+    return this.http.post(url, channelData);
   }
 
 

@@ -7,6 +7,7 @@ import { Observable, Subscription, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { User } from 'src/app/shared/models/user.class';
+import { CreateChannelComponent } from '../dialogs/create-channel/create-channel.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -42,6 +43,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.authService.getUserData();
     this.getUsers();
     this.screenWidth = window.innerWidth;
+    console.log(this.channelService.channels$);    
   }
 
 
@@ -70,7 +72,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
 
   openDialogToCreateChannel() {
-    // this.dialog.open(DialogCreateChannelComponent);
+    this.dialog.open(CreateChannelComponent);
   }
 
 
