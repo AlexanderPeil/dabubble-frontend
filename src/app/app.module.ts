@@ -25,8 +25,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatChipsModule } from '@angular/material/chips';
+
 import { DialogProfileComponent } from './components/dialogs/dialog-profile/dialog-profile.component';
 import { EmailVerifyComponent } from './components/email-verify/email-verify.component';
+import { CreateChannelComponent } from './components/dialogs/create-channel/create-channel.component';
 
 
 @NgModule({
@@ -46,7 +50,8 @@ import { EmailVerifyComponent } from './components/email-verify/email-verify.com
     SidenavComponent,
     ThreadComponent,
     DialogProfileComponent,
-    EmailVerifyComponent
+    EmailVerifyComponent,
+    CreateChannelComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,8 @@ import { EmailVerifyComponent } from './components/email-verify/email-verify.com
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatRadioModule,
+    MatChipsModule
   ],
   providers: [
     {

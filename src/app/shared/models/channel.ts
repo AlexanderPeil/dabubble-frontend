@@ -1,7 +1,7 @@
 export class Channel {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   members: number[];
   created_by: number;
 
